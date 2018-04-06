@@ -128,11 +128,11 @@ L:
 		return softmax
 	default:
 
-		// OWK Here we analyse the dictionnary
+		// OWK Here we analyse the dictionary
 		yylval.node = &G.Node{}
 		val, ok := x.dico[b.String()]
 		if !ok {
-			x.Error("Value does not exist in the dictionnary: " + b.String())
+			x.Error("Value does not exist in the dictionary: " + b.String())
 			return eof
 		}
 		yylval.node = val

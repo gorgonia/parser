@@ -1,4 +1,5 @@
 [![](https://godoc.org/gorgonia.org/parser?status.svg)](http://godoc.org/gorgonia.org/parser)
+[![Report card](https://goreportcard.com/badge/github.com/gorgonia/parser)](https://goreportcard.com/report/github.com/gorgonia/parser)
 
 # About
 

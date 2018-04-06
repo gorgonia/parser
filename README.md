@@ -1,6 +1,6 @@
 [![](https://godoc.org/gorgonia.org/parser?status.svg)](http://godoc.org/gorgonia.org/parser)
 
-#About
+# About
 
 The goal of this project is to parse a mathematical formulae written in unicode and to transpile is into an `ExprGraph` of the Gorgonia project.
 

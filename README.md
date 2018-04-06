@@ -1,4 +1,4 @@
-[![](https://godoc.org/gorgonia.org/parser?status.svg)](http://godoc.org/gorgonia.org/parser)
+[![](https://godoc.org/github.com/gorgonia/parser?status.svg)](http://godoc.org/github.com/gorgonia/parser)
 [![Report card](https://goreportcard.com/badge/github.com/gorgonia/parser)](https://goreportcard.com/report/github.com/gorgonia/parser)
 
 # About
@@ -31,7 +31,7 @@ As of today, the parser understands the following opreations on node objects (te
 ```go
 import (
 	G "gorgonia.org/gorgonia"
-	"gorgonia.org/parser"
+	"github.com/gorgonia/parser"
 	"gorgonia.org/tensor"
 )
 

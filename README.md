@@ -20,7 +20,7 @@ As of today, the parser understands the following opreations on node objects (te
 | Hadamard Product   | [HadamardProd](https://godoc.org/gorgonia.org/gorgonia#HadamardProd) | *       |                   |
 | Addition           | [Add](https://godoc.org/gorgonia.org/gorgonia#Add)                   | +       |                   |
 | Substraction       | [Sub](https://godoc.org/gorgonia.org/gorgonia#Sub)                   | -       |                   |
-| Pointwise Negation | [Neg]([Add](https://godoc.org/gorgonia.org/gorgonia#Neg)             | -       |                   |
+| Pointwise Negation | [Neg](https://godoc.org/gorgonia.org/gorgonia#Neg)                   | -       |                   |
 | Sigmoid            | [Sigmiod](https://godoc.org/gorgonia.org/gorgonia#Sigmoid)           | σ       | U+03C3            |
 | Tanh               | [Tanh](https://godoc.org/gorgonia.org/gorgonia#Tanh)                 | tanh    |                   |
 | Softmax            | [Softmax](https://godoc.org/gorgonia.org/gorgonia#Softmax)           | softmax |                   |

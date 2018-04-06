@@ -18,6 +18,7 @@ func NewParser(g *G.ExprGraph) *Parser {
 	}
 }
 
+// Get a pointer to the Node from its representation in the formulae
 func (p *Parser) Get(ident string) *G.Node {
 	return p.dico[ident]
 }

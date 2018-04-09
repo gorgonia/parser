@@ -64,3 +64,4 @@ func main(){
 
 * The parser is internally using a `map` and is not concurrent safe.
 * The errors are not handle correctly
+

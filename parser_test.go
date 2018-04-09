@@ -1,15 +1,58 @@
-package parser_test
+package parser
 
 import (
+	"strings"
 	"testing"
 
 	G "gorgonia.org/gorgonia"
-	"gorgonia.org/parser"
 	"gorgonia.org/tensor"
 )
 
 func σ(a *G.Node) *G.Node {
 	return G.Must(G.Sigmoid(a))
+}
+
+const lstm = `
+xₜ∈ℝ⁶⁵
+fₜ∈ℝ¹⁰⁰
+iₜ∈ℝ¹⁰⁰
+oₜ∈ℝ¹⁰⁰
+hₜ∈ℝ¹⁰⁰
+hₜ₋₁∈ℝ¹⁰⁰
+cₜ₋₁∈ℝ¹⁰⁰
+cₜ∈ℝ¹⁰⁰
+xᵢ∈ℝ¹⁰⁰ˣ⁶⁵
+Wᵢ∈ℝ¹⁰⁰ˣ⁶⁵
+Uᵢ∈ℝ¹⁰⁰ˣ¹⁰⁰
+Bᵢ∈ℝ¹⁰⁰
+Wₒ∈ℝ¹⁰⁰ˣ⁶⁵
+Uₒ∈ℝ¹⁰⁰ˣ¹⁰⁰
+Bₒ∈ℝ¹⁰⁰
+Wf∈ℝ¹⁰⁰ˣ⁶⁵
+Uf∈ℝ¹⁰⁰ˣ¹⁰⁰
+Bf∈ℝ¹⁰⁰
+Wc∈ℝ¹⁰⁰ˣ⁶⁵
+Uc∈ℝ¹⁰⁰ˣ¹⁰⁰
+Bc∈ℝ¹⁰⁰
+Wy∈ℝ⁶⁵ˣ¹⁰⁰
+By∈ℝ⁶⁵
+
+iₜ=(Wᵢ·xₜ+Uᵢ·hₜ₋₁+Bᵢ)
+fₜ=σ(Wf·xₜ+Uf·hₜ₋₁+Bf)
+oₜ=σ(Wₒ·xₜ+Uₒ·hₜ₋₁+Bₒ)
+ĉₜ=tanh(Wc·xₜ+Uc·hₜ₋₁+Bc)
+cₜ=fₜ*cₜ₋₁+iₜ*ĉₜ
+hₜ=oₜ*tanh(cₜ)
+y=Wy·hₜ+By
+`
+
+func TestProcess(t *testing.T) {
+	g := G.NewGraph()
+	p := NewParser(g)
+	_, err := p.Process(strings.NewReader(lstm), nil)
+	if err != nil {
+		t.Fatal(err)
+	}
 }
 
 func TestParse(t *testing.T) {
@@ -23,7 +66,7 @@ func TestParse(t *testing.T) {
 	bfT := tensor.New(tensor.WithBacking([]float32{1, 1}), tensor.WithShape(2))
 	bf := G.NewVector(g, tensor.Float32, G.WithName("bf"), G.WithShape(2), G.WithValue(bfT))
 
-	p := parser.NewParser(g)
+	p := NewParser(g)
 	p.Set(`Wf`, wf)
 	p.Set(`hₜ₋₁`, htprev)
 	p.Set(`xₜ`, xt)

@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	G "gorgonia.org/gorgonia"
-	"gorgonia.org/parser"
+	"github.com/gorgonia/parser"
 	"gorgonia.org/tensor"
 )
 
